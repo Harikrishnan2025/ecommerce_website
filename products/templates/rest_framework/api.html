@@ -1,0 +1,18 @@
+{% extends "rest_framework/base.html" %}
+
+{% block content %}
+  {{ block.super }}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Ensure multiple file upload works
+      const fileInputs = document.querySelectorAll('input[type="file"][name="upload_images"]');
+      fileInputs.forEach(input => {
+          input.setAttribute('multiple', '');
+          // Fix for DRF's form rendering
+          if (!input.hasAttribute('multiple')) {
+              input.setAttribute('multiple', '');
+          }
+      });
+  });
+  </script>
+{% endblock %}
